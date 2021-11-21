@@ -1,0 +1,31 @@
+.navbar {
+    background-color: #171717;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    cursor: pointer;
+    color: turquoise;
+    font-size: 17px;
+}
+
+.nav-title {
+    color: #ffeb3b;
+    font-size: 24px;
+    margin-left: 20px;
+    font-family: 'Trocchi', serif;
+    text-shadow: 0 0 10px #ff8c3b,
+                 0 0 40px #ff8c3b,
+                 0 0 80px #ff8c3b,
+                 0 0 160px #ff8c3b,
+                 0 0 240px #ff8c3b;
+}
