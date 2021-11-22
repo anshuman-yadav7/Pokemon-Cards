@@ -5,7 +5,6 @@ function Navbar() {
     return (
         <div className="navbar">
             <p className="nav-title">Pokemon Cards</p>
-            <a href="">API used</a>
         </div>
     )
 }
