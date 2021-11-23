@@ -1,24 +1,109 @@
-import logo from './logo.svg';
+import react, { useState, useEffect } from 'react';
+import { getAllPokemon } from './services/pokemon';
+import Card from './components/Cards/Card';
+import Navbar from './components/Navbar/Navbar';
 import './App.css';
+import Footer from './components/Footer/Footer';
 
 function App() {
+  const [pokemonData, setPokemonData] = useState([]);
+  const [nextUrl, setNextUrl] = useState('');
+  const [prevUrl, setPrevUrl] = useState(['']);
+  const [loading, setLoading] = useState(true);
+  const [searchPokemon, setSearchPokemon] = useState('');
+  const initialUrl = 'https://pokeapi.co/api/v2/pokemon';
+
+  useEffect(() => {
+    async function fetchData() {
+      let response = await getAllPokemon(initialUrl);
+      console.log(response);
+      setNextUrl(response.next);
+      setPrevUrl(response.prevUrl);
+      const pokemon = await loadingPokemon(response.results);
+      console.log(pokemon);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
+  const next = async () => {
+    setLoading(true);
+    let data = await getAllPokemon(nextUrl);
+    await loadingPokemon(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  }
+
+  const prev = async () => {
+    if (!prevUrl) return;
+    setLoading(true);
+    let data = await getAllPokemon(prevUrl);
+    await loadingPokemon(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  }
+
+  const loadingPokemon = async (data) => {
+    let _pokemonData = await Promise.all(data.map(async pokemon => {
+      let pokemonRecord = await getAllPokemon(pokemon.url);
+      return pokemonRecord;
+    }))
+
+    setPokemonData(_pokemonData);
+  }
+  console.log(pokemonData);
+  const filteredData = pokemonData.filter(val => {
+    if(searchPokemon === "") return val;
+    else if (val.name.toLowerCase().includes(searchPokemon.toLowerCase())) return val;
+  });
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <Navbar />
+    <div className="main-container">
+      
+      {
+        loading ? <h1 className="loading-text">Loading...</h1> : (
+          <>
+
+          <div className="button-input">
+            <input className="search-pokemon" type="text" placeholder="Search pokemon" onChange={
+                event => {
+                  setSearchPokemon(event.target.value)
+                }
+              }></input>
+
+              <div className='btn btn-common btn-top'>
+                <button onClick={prev}>Prev</button>
+                <button onClick={next}>Next</button>
+              </div>
+          </div>
+            
+            <div className='grid-container'>
+              
+              {
+                filteredData.map((pokemon, i) => {
+                  return <Card key={i} pokemon={pokemon}/>})
+              }
+              {
+                !filteredData.length && <h1>No Pokemon Found</h1>
+              }
+            </div>
+
+            <div className='btn btn-common btn-bottom'>
+              <button onClick={prev}>Prev</button>
+              <button onClick={next}>Next</button>
+            </div>
+          </>
+        )
+      }
     </div>
+    <Footer />
+    </>
   );
 }
 
