@@ -1,0 +1,78 @@
+.card {
+    padding: 20px;
+    border-radius: 20px;
+    opacity: 95%;
+    background-color: #000000;
+background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+    color: white;
+    text-transform: capitalize;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px #ff8c3b,
+                 0 0 50px #ff8c3b,
+                 0 0 10px #ff8c3b,
+                 0 0 10px #ff8c3b,
+                 0 0 10px #ff8c3b;
+    transform: scale(1.04);
+    background-color: #e84393;
+background-image: linear-gradient(315deg, #e84393 0%, #000000 74%);
+    transition: .3s;
+}
+
+.card-img {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100px;
+    border-radius: 20px;
+}
+
+.card-img img {
+    height: 100px;
+    width: 100px;
+}
+
+.card-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px #ff8c3b,
+    0 0 50px #ff3bad,
+    0 0 10px #ff3bad,
+    0 0 10px #ff3bad,
+    0 0 10px #ff3bad;
+
+}
+
+.card-name:hover {
+    color: #ffeb3b;
+    text-shadow: 0 0 10px #ff8c3b,
+    0 0 40px #ff8c3b,
+    0 0 80px #ff8c3b,
+    0 0 160px #ff8c3b,
+    0 0 240px #ff8c3b;
+}
+
+.card-types {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 30px;
+}
+
+.card-info {
+    padding: 10px 10px;
+}
+
+.card-data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-data .title {
+    font-size: 16px;
+    font-weight: bold;
+}
