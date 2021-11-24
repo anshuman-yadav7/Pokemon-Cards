@@ -54,7 +54,6 @@ function App() {
 
     setPokemonData(_pokemonData);
   }
-
   const filteredData = pokemonData.filter(val => {
     if(searchPokemon === "") return val;
     else if (val.name.toLowerCase().includes(searchPokemon.toLowerCase())) return val;
@@ -63,6 +62,8 @@ function App() {
   return (
     <>
     <Navbar />
+
+
     <div className="main-container">
       
       {
