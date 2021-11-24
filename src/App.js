@@ -4,6 +4,7 @@ import Card from './components/Cards/Card';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
 import Footer from './components/Footer/Footer';
+import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
@@ -53,13 +54,11 @@ function App() {
 
     setPokemonData(_pokemonData);
   }
-  console.log(pokemonData);
+
   const filteredData = pokemonData.filter(val => {
     if(searchPokemon === "") return val;
     else if (val.name.toLowerCase().includes(searchPokemon.toLowerCase())) return val;
   });
-
-
 
   return (
     <>
@@ -69,34 +68,25 @@ function App() {
       {
         loading ? <h1 className="loading-text">Loading...</h1> : (
           <>
-
           <div className="button-input">
             <input className="search-pokemon" type="text" placeholder="Search pokemon" onChange={
                 event => {
                   setSearchPokemon(event.target.value)
                 }
-              }></input>
-
-              <div className='btn btn-common btn-top'>
-                <button onClick={prev}>Prev</button>
-                <button onClick={next}>Next</button>
-              </div>
+              }>  
+            </input>
           </div>
             
             <div className='grid-container'>
-              
+              <div className="pagination-arrows left-arrow" onClick={prev}><MdOutlineArrowBackIosNew /></div>
+              <div className="pagination-arrows right-arrow" onClick={next}><MdOutlineArrowForwardIos /></div>
               {
                 filteredData.map((pokemon, i) => {
                   return <Card key={i} pokemon={pokemon}/>})
               }
               {
-                !filteredData.length && <h1>No Pokemon Found</h1>
+                !filteredData.length && <h1 className="no-result">No Pokemon Found</h1>
               }
-            </div>
-
-            <div className='btn btn-common btn-bottom'>
-              <button onClick={prev}>Prev</button>
-              <button onClick={next}>Next</button>
             </div>
           </>
         )
