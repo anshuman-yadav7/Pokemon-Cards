@@ -1,9 +1,9 @@
 import React from "react";
 import './Card.css';
 
-function Card({pokemon}) {
+function Card({pokemon, onClick}) {
     return (
-        <div className="card">
+        <div className="card" onClick={()=>onClick()}>
             <div className="card-img">
                 <img src={pokemon.sprites.front_default} alt="" />
                 <p className="card-name">
