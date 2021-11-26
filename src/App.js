@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import './App.css';
 import Footer from './components/Footer/Footer';
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
+import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 import PokemonDetails from './components/PokemonDetails/PokemonDetails';
 
 function App() {
@@ -96,6 +97,9 @@ function App() {
           </div>
             
             <div className='grid-container'>
+            <div className="up-icon"><BsFillArrowUpCircleFill /></div>
+            <div className="behind-up-icon"></div>
+            {/* <i class="up-icon Bs BsFillArrowUpCircleFill" ></i> */}
               {!pokemonDetailsVisible && <>
                 {currentPage !== 0 && <div className="pagination-arrows left-arrow" onClick={prev}><MdOutlineArrowBackIosNew /></div>}
                 <div className="pagination-arrows right-arrow" onClick={next}><MdOutlineArrowForwardIos /></div>

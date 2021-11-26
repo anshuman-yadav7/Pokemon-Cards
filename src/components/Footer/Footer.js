@@ -3,13 +3,13 @@ import './Footer.css';
 import { AiFillHeart } from "react-icons/ai";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 
-function Footer() {
+export default function Footer() {
     return (
         <div className="footer">
-            <p className="nav-title">Made with <AiFillHeart/></p>
-            <div className="up-icon"><BsFillArrowUpCircleFill /></div>
+            <div className="footer-content">
+                <p className="footer-title">Made with</p>
+                <span className="heart-icon"><AiFillHeart/></span>
+            </div>
         </div>
     )
 }
-
-export default Footer;
