@@ -4,28 +4,23 @@
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content:center;
     padding: 0px 20px;
     bottom: 0;
     position: fixed;
     width: 100%;
 }
-
-a {
-    text-decoration: none;
-    color: white;
+ 
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-a:hover {
-    cursor: pointer;
-    color: turquoise;
-    font-size: 14px;
-}
-
-.footer-link {
+.footer-title {
     text-align: center;
     color: #ffeb3b;
-    font-size: 30px;
+    font-size: 24px;
     font-family: 'Trocchi', serif;
     text-shadow: 0 0 10px #ff8c3b,
                  0 0 40px #ff8c3b,
@@ -34,11 +29,7 @@ a:hover {
                  0 0 240px #ff8c3b;
 }
 
-.up-icon {
-    float: right;
-    color: white;
+.heart-icon {
+    color: tomato;
     font-size: 30px;
-    position: fixed;
-    bottom: 30;
-    right: 10;
 }
