@@ -99,6 +99,7 @@ function App() {
             <div className='grid-container'>
             <div className="up-icon"><BsFillArrowUpCircleFill /></div>
             <div className="behind-up-icon"></div>
+            {/* <i class="up-icon Bs BsFillArrowUpCircleFill" ></i> */}
               {!pokemonDetailsVisible && <>
                 {currentPage !== 0 && <div className="pagination-arrows left-arrow" onClick={prev}><MdOutlineArrowBackIosNew /></div>}
                 <div className="pagination-arrows right-arrow" onClick={next}><MdOutlineArrowForwardIos /></div>
