@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.65cb9a97.chunk.css",
-    "main.js": "/static/js/main.f48194a6.chunk.js",
-    "main.js.map": "/static/js/main.f48194a6.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.35da9fd5.js",
-    "runtime-main.js.map": "/static/js/runtime-main.35da9fd5.js.map",
-    "static/js/2.f793ff5a.chunk.js": "/static/js/2.f793ff5a.chunk.js",
-    "static/js/2.f793ff5a.chunk.js.map": "/static/js/2.f793ff5a.chunk.js.map",
-    "static/js/3.b8a0b9d3.chunk.js": "/static/js/3.b8a0b9d3.chunk.js",
-    "static/js/3.b8a0b9d3.chunk.js.map": "/static/js/3.b8a0b9d3.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.65cb9a97.chunk.css.map": "/static/css/main.65cb9a97.chunk.css.map",
-    "static/js/2.f793ff5a.chunk.js.LICENSE.txt": "/static/js/2.f793ff5a.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/pokemon_background.259fd1ec.jpg"
+    "main.css": "/Pokemon-Cards/build/static/css/main.8e967bf3.chunk.css",
+    "main.js": "/Pokemon-Cards/build/static/js/main.f48194a6.chunk.js",
+    "main.js.map": "/Pokemon-Cards/build/static/js/main.f48194a6.chunk.js.map",
+    "runtime-main.js": "/Pokemon-Cards/build/static/js/runtime-main.c7c1e5a4.js",
+    "runtime-main.js.map": "/Pokemon-Cards/build/static/js/runtime-main.c7c1e5a4.js.map",
+    "static/js/2.f793ff5a.chunk.js": "/Pokemon-Cards/build/static/js/2.f793ff5a.chunk.js",
+    "static/js/2.f793ff5a.chunk.js.map": "/Pokemon-Cards/build/static/js/2.f793ff5a.chunk.js.map",
+    "static/js/3.b8a0b9d3.chunk.js": "/Pokemon-Cards/build/static/js/3.b8a0b9d3.chunk.js",
+    "static/js/3.b8a0b9d3.chunk.js.map": "/Pokemon-Cards/build/static/js/3.b8a0b9d3.chunk.js.map",
+    "index.html": "/Pokemon-Cards/build/index.html",
+    "static/css/main.8e967bf3.chunk.css.map": "/Pokemon-Cards/build/static/css/main.8e967bf3.chunk.css.map",
+    "static/js/2.f793ff5a.chunk.js.LICENSE.txt": "/Pokemon-Cards/build/static/js/2.f793ff5a.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/Pokemon-Cards/build/static/media/pokemon_background.259fd1ec.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.35da9fd5.js",
+    "static/js/runtime-main.c7c1e5a4.js",
     "static/js/2.f793ff5a.chunk.js",
-    "static/css/main.65cb9a97.chunk.css",
+    "static/css/main.8e967bf3.chunk.css",
     "static/js/main.f48194a6.chunk.js"
   ]
 }
