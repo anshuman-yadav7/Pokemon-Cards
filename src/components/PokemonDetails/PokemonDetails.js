@@ -11,7 +11,7 @@ export default function PokemonDetails(props) {
             
             <div className="pokemon-card card">
                 <div className="card-img">
-                    <img src={props.data.sprites.front_default} alt="" />
+                    <img src={props.data.sprites.front_default} alt="Pokemon" />
                     <p className="card-name">
                         {props.data.name}
                     </p>

@@ -26,6 +26,7 @@ export default function App() {
   useEffect(() => {
     async function fetchData() {
       const response = await getAllPokemon(initialUrl);
+      await loadingPokemon(response.results);
       setNextUrl(response.next);
       setPrevUrl(response.prevUrl);
       setLoading(false);
