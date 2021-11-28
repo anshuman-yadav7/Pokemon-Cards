@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Pokemon-Cards/build/static/css/main.8e967bf3.chunk.css",
-    "main.js": "/Pokemon-Cards/build/static/js/main.f48194a6.chunk.js",
-    "main.js.map": "/Pokemon-Cards/build/static/js/main.f48194a6.chunk.js.map",
+    "main.css": "/Pokemon-Cards/build/static/css/main.20d2a7c8.chunk.css",
+    "main.js": "/Pokemon-Cards/build/static/js/main.e7bd61a1.chunk.js",
+    "main.js.map": "/Pokemon-Cards/build/static/js/main.e7bd61a1.chunk.js.map",
     "runtime-main.js": "/Pokemon-Cards/build/static/js/runtime-main.c7c1e5a4.js",
     "runtime-main.js.map": "/Pokemon-Cards/build/static/js/runtime-main.c7c1e5a4.js.map",
     "static/js/2.f793ff5a.chunk.js": "/Pokemon-Cards/build/static/js/2.f793ff5a.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.b8a0b9d3.chunk.js": "/Pokemon-Cards/build/static/js/3.b8a0b9d3.chunk.js",
     "static/js/3.b8a0b9d3.chunk.js.map": "/Pokemon-Cards/build/static/js/3.b8a0b9d3.chunk.js.map",
     "index.html": "/Pokemon-Cards/build/index.html",
-    "static/css/main.8e967bf3.chunk.css.map": "/Pokemon-Cards/build/static/css/main.8e967bf3.chunk.css.map",
+    "static/css/main.20d2a7c8.chunk.css.map": "/Pokemon-Cards/build/static/css/main.20d2a7c8.chunk.css.map",
     "static/js/2.f793ff5a.chunk.js.LICENSE.txt": "/Pokemon-Cards/build/static/js/2.f793ff5a.chunk.js.LICENSE.txt",
     "static/media/index.css": "/Pokemon-Cards/build/static/media/pokemon_background.259fd1ec.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.c7c1e5a4.js",
     "static/js/2.f793ff5a.chunk.js",
-    "static/css/main.8e967bf3.chunk.css",
-    "static/js/main.f48194a6.chunk.js"
+    "static/css/main.20d2a7c8.chunk.css",
+    "static/js/main.e7bd61a1.chunk.js"
   ]
 }

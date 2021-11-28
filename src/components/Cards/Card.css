@@ -7,7 +7,7 @@
     border-radius: 20px;
     color: white;
     font-family: 'Lobster Two', cursive;
-    opacity: 95%;
+    opacity: 0.95;
     padding: 20px;
     text-transform: capitalize;
     transition: .3s

@@ -26,7 +26,6 @@ export default function App() {
   useEffect(() => {
     async function fetchData() {
       const response = await getAllPokemon(initialUrl);
-      const pokemon = await loadingPokemon(response.results);
       setNextUrl(response.next);
       setPrevUrl(response.prevUrl);
       setLoading(false);
@@ -35,11 +34,9 @@ export default function App() {
     fetchData();
 
     const mainContainer = document.querySelector('.main-container');
-    console.log(mainContainer);
     mainContainer.addEventListener('scroll', () => {
       const isElementInView = mainContainer.scrollTop < 100;
       const scrollUpIcon = document.querySelector('.up-icon');
-      console.log(scrollUpIcon);
       const behindScrollButton = document.querySelector('.behind-up-icon');
 
       if(scrollUpIcon && behindScrollButton) {

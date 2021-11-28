@@ -5,7 +5,7 @@ export default function Card({pokemon, onClick}) {
     return (
         <div className="card" onClick={()=>onClick()}>
             <div className="card-img">
-                <img src={pokemon.sprites.front_default} alt="Pokemon Image" />
+                <img src={pokemon.sprites.front_default} alt="Pokemon" />
                 <p className="card-name">
                     {pokemon.name}
                 </p>
