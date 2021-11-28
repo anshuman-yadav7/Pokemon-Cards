@@ -1,7 +1,6 @@
 import React from "react";
 import './Footer.css';
 import { AiFillHeart } from "react-icons/ai";
-import { BsFillArrowUpCircleFill } from "react-icons/bs";
 
 export default function Footer() {
     return (

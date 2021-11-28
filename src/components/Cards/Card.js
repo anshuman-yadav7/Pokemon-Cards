@@ -13,9 +13,9 @@ function Card({pokemon, onClick}) {
             
             <div className="card-types">
                 {
-                    pokemon.types.map(type => {
+                    pokemon.types.map((type, index) => {
                         return (
-                            <div className="card-type">
+                            <div key={index}className="card-type">
                                 {type.type.name}
                             </div>
                         )

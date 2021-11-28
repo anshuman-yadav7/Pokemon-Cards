@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getAllPokemon } from './services/pokemon';
 import Card from './components/Cards/Card';
 import Navbar from './components/Navbar/Navbar';
@@ -31,6 +31,22 @@ function App() {
       setCurrentPage(0);
     }
     fetchData();
+
+    const mainContainer = document.querySelector(".main-container");
+    mainContainer.addEventListener("scroll",() => {
+      const isElementInView = mainContainer.scrollTop < 100;
+      console.log(isElementInView);
+      const scrollUpIcon = document.querySelector(".up-icon");
+      const behindScrollButton = document.querySelector(".behind-up-icon");
+      if(isElementInView) {
+          scrollUpIcon.classList.add("hidden");
+          behindScrollButton.classList.add("hidden");
+      }
+      else {
+        scrollUpIcon.classList.remove("hidden");
+        behindScrollButton.classList.remove("hidden");
+      }
+    })
   }, []);
 
   const next = async () => {
@@ -65,28 +81,24 @@ function App() {
 
     setPokemonData(_pokemonData);
   }
-  const filteredData = pokemonData.filter(val => {
-    if(searchPokemon === "") return val;
-    else if (val.name.toLowerCase().includes(searchPokemon.toLowerCase())) return val;
-  });
+  const filteredData = pokemonData.filter(val => 
+    val.name.toLowerCase().includes(searchPokemon.toLowerCase())
+  );
 
   const setCurrentPokemonData = (pokemon) => {
     setCurrentPokemonDataState(pokemon);
     setPokemonDetailsVisible(true);
   }
 
-  console.log(currentPage);
-
   return (
     <>
     <Navbar />
 
     <div className="main-container">
-      
       {
         loading ? <h1 className="loading-text">Loading...</h1> : (
           <>
-          <div className="button-input">
+          <div className="button-input" id="search-bar">
             <input className="search-pokemon" type="text" placeholder="Search pokemon" onChange={
                 event => {
                   setSearchPokemon(event.target.value)
@@ -97,17 +109,25 @@ function App() {
           </div>
             
             <div className='grid-container'>
-            <div className="up-icon"><BsFillArrowUpCircleFill /></div>
-            <div className="behind-up-icon"></div>
-            {/* <i class="up-icon Bs BsFillArrowUpCircleFill" ></i> */}
+            <a href="#search-bar" className="scrollToTop">
+              <div className="up-icon hidden"><BsFillArrowUpCircleFill /></div>
+              <div className="behind-up-icon hidden"></div>
+            </a>
+              {/* {!isVisible && <><div className="up-icon" onClick={scrollToTop}>
+                  <BsFillArrowUpCircleFill className="up-icon" onClick={scrollToTop}/>
+              </div></>} */}
+
+              {/* {!isVisible && <BsFillArrowUpCircleFill className="up-icon" onClick={scrollToTop}/>}
+            <div className="behind-up-icon"></div> */}
+
               {!pokemonDetailsVisible && <>
                 {currentPage !== 0 && <div className="pagination-arrows left-arrow" onClick={prev}><MdOutlineArrowBackIosNew /></div>}
                 <div className="pagination-arrows right-arrow" onClick={next}><MdOutlineArrowForwardIos /></div>
               </>}
               {
                 pokemonDetailsVisible ? <PokemonDetails data={currentPokemonData} closeDetails={()=>{setPokemonDetailsVisible(false)}}/>:
-                filteredData.map((pokemon, i) => {
-                  return <Card key={i} onClick={() => setCurrentPokemonData(pokemon)} pokemon={pokemon}/>})
+                filteredData.map((pokemon, index) => {
+                  return <Card key={index} onClick={() => setCurrentPokemonData(pokemon)} pokemon={pokemon}/>})
               }
               {
                 !filteredData.length && <h1 className="no-result">No Pokemon Found</h1>

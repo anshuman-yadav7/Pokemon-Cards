@@ -19,9 +19,9 @@ export default function PokemonDetails(props) {
             
                 <div className="card-types">
                     {
-                        props.data.types.map(type => {
+                        props.data.types.map((type,index) => {
                             return (
-                                <div className="card-type">
+                                <div key={index} className="card-type">
                                     {type.type.name}
                                 </div>
                             )

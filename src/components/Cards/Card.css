@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&family=Satisfy&display=swap');
 .card {
+    font-family: 'Lobster Two', cursive;
     padding: 20px;
     border-radius: 20px;
     opacity: 95%;
