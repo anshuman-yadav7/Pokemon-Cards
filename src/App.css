@@ -50,7 +50,7 @@
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 25px;
-  opacity: 50%;
+  opacity: 0.5;
 }
 
 .button-input input[type='text'] {
