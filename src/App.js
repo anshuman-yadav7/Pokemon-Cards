@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
 import { getAllPokemon } from './services/pokemon';
+
 import Card from './components/Cards/Card';
 import Navbar from './components/Navbar/Navbar';
-import './App.css';
 import Footer from './components/Footer/Footer';
-import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
-import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 import PokemonDetails from './components/PokemonDetails/PokemonDetails';
 
-function App() {
+import './App.css';
+
+import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md';
+import { BsFillArrowUpCircleFill } from 'react-icons/bs';
+
+export default function App() {
+
   const [pokemonData, setPokemonData] = useState([]);
   const [nextUrl, setNextUrl] = useState('');
   const [prevUrl, setPrevUrl] = useState(['']);
@@ -21,37 +25,39 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let response = await getAllPokemon(initialUrl);
-      console.log(response);
+      const response = await getAllPokemon(initialUrl);
+      const pokemon = await loadingPokemon(response.results);
       setNextUrl(response.next);
       setPrevUrl(response.prevUrl);
-      const pokemon = await loadingPokemon(response.results);
-      console.log(pokemon);
       setLoading(false);
       setCurrentPage(0);
     }
     fetchData();
 
-    const mainContainer = document.querySelector(".main-container");
-    mainContainer.addEventListener("scroll",() => {
+    const mainContainer = document.querySelector('.main-container');
+    console.log(mainContainer);
+    mainContainer.addEventListener('scroll', () => {
       const isElementInView = mainContainer.scrollTop < 100;
-      console.log(isElementInView);
-      const scrollUpIcon = document.querySelector(".up-icon");
-      const behindScrollButton = document.querySelector(".behind-up-icon");
-      if(isElementInView) {
-          scrollUpIcon.classList.add("hidden");
-          behindScrollButton.classList.add("hidden");
-      }
-      else {
-        scrollUpIcon.classList.remove("hidden");
-        behindScrollButton.classList.remove("hidden");
+      const scrollUpIcon = document.querySelector('.up-icon');
+      console.log(scrollUpIcon);
+      const behindScrollButton = document.querySelector('.behind-up-icon');
+
+      if(scrollUpIcon && behindScrollButton) {
+        if(isElementInView) {
+          scrollUpIcon.classList.add('hidden');
+          behindScrollButton.classList.add('hidden');
+        }
+        else {
+          scrollUpIcon.classList.remove('hidden');
+          behindScrollButton.classList.remove('hidden');
+        }
       }
     })
   }, []);
 
   const next = async () => {
     setLoading(true);
-    let data = await getAllPokemon(nextUrl);
+    const data = await getAllPokemon(nextUrl);
     await loadingPokemon(data.results);
     setNextUrl(data.next);
     setPrevUrl(data.previous);
@@ -60,12 +66,9 @@ function App() {
   }
 
   const prev = async () => {
-    if (!prevUrl || currentPage <= 0) {
-      console.log(prevUrl)
-      return;
-    }
+    if (!prevUrl || currentPage <= 0) return;
     setLoading(true);
-    let data = await getAllPokemon(prevUrl);
+    const data = await getAllPokemon(prevUrl);
     await loadingPokemon(data.results);
     setNextUrl(data.next);
     setPrevUrl(data.previous);
@@ -81,65 +84,67 @@ function App() {
 
     setPokemonData(_pokemonData);
   }
+
   const filteredData = pokemonData.filter(val => 
     val.name.toLowerCase().includes(searchPokemon.toLowerCase())
   );
 
-  const setCurrentPokemonData = (pokemon) => {
+  const setCurrentPokemonData = pokemon => {
     setCurrentPokemonDataState(pokemon);
     setPokemonDetailsVisible(true);
   }
 
   return (
     <>
-    <Navbar />
+      <Navbar />
+      <div className='main-container'>
+        {
+          loading ? <h1 className='loading-text'>Loading...</h1> : (
+            <>
+              <div className='button-input' id='search-bar'>
+                <input className='search-pokemon' type='text' placeholder='Search pokemon' onChange = {
+                    event => {
+                      setSearchPokemon(event.target.value)
+                      if(pokemonDetailsVisible) setPokemonDetailsVisible(false);
+                    }
+                  }>  
+                </input>
+              </div>
+                
+              <div className='grid-container'>
+                <a href='#search-bar' className='scrollToTop'>
+                  <div className='up-icon hidden'><BsFillArrowUpCircleFill /></div>
+                  <div className='behind-up-icon hidden'></div>
+                </a>
 
-    <div className="main-container">
-      {
-        loading ? <h1 className="loading-text">Loading...</h1> : (
-          <>
-          <div className="button-input" id="search-bar">
-            <input className="search-pokemon" type="text" placeholder="Search pokemon" onChange={
-                event => {
-                  setSearchPokemon(event.target.value)
-                  if(pokemonDetailsVisible) setPokemonDetailsVisible(false);
+                {
+                  !pokemonDetailsVisible && 
+                  <>
+                    {
+                      currentPage !== 0 && 
+                      <div className='pagination-arrows left-arrow' onClick={prev}><MdOutlineArrowBackIosNew /></div>
+                    }
+                    <div className='pagination-arrows right-arrow' onClick={next}><MdOutlineArrowForwardIos /></div>
+                  </>
                 }
-              }>  
-            </input>
-          </div>
-            
-            <div className='grid-container'>
-            <a href="#search-bar" className="scrollToTop">
-              <div className="up-icon hidden"><BsFillArrowUpCircleFill /></div>
-              <div className="behind-up-icon hidden"></div>
-            </a>
-              {/* {!isVisible && <><div className="up-icon" onClick={scrollToTop}>
-                  <BsFillArrowUpCircleFill className="up-icon" onClick={scrollToTop}/>
-              </div></>} */}
 
-              {/* {!isVisible && <BsFillArrowUpCircleFill className="up-icon" onClick={scrollToTop}/>}
-            <div className="behind-up-icon"></div> */}
+                {
+                  pokemonDetailsVisible ? 
+                    <PokemonDetails data={currentPokemonData} closeDetails={()=>{setPokemonDetailsVisible(false)}}/> :
+                    filteredData.map((pokemon, index) => {
+                      return <Card key={index} onClick={() => setCurrentPokemonData(pokemon)} pokemon={pokemon}/>
+                    })
+                }
 
-              {!pokemonDetailsVisible && <>
-                {currentPage !== 0 && <div className="pagination-arrows left-arrow" onClick={prev}><MdOutlineArrowBackIosNew /></div>}
-                <div className="pagination-arrows right-arrow" onClick={next}><MdOutlineArrowForwardIos /></div>
-              </>}
-              {
-                pokemonDetailsVisible ? <PokemonDetails data={currentPokemonData} closeDetails={()=>{setPokemonDetailsVisible(false)}}/>:
-                filteredData.map((pokemon, index) => {
-                  return <Card key={index} onClick={() => setCurrentPokemonData(pokemon)} pokemon={pokemon}/>})
-              }
-              {
-                !filteredData.length && <h1 className="no-result">No Pokemon Found</h1>
-              }
-            </div>
-          </>
-        )
-      }
-    </div>
-    <Footer />
+                {
+                  !filteredData.length && <h1 className='no-result'>No Pokemon Found</h1>
+                }
+              </div>
+            </>
+          )
+        }
+      </div>
+      <Footer />
     </>
   );
 }
-
-export default App;

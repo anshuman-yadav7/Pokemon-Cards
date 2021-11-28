@@ -1,11 +1,11 @@
 import React from "react";
 import './Card.css';
 
-function Card({pokemon, onClick}) {
+export default function Card({pokemon, onClick}) {
     return (
         <div className="card" onClick={()=>onClick()}>
             <div className="card-img">
-                <img src={pokemon.sprites.front_default} alt="" />
+                <img src={pokemon.sprites.front_default} alt="Pokemon Image" />
                 <p className="card-name">
                     {pokemon.name}
                 </p>
@@ -15,7 +15,7 @@ function Card({pokemon, onClick}) {
                 {
                     pokemon.types.map((type, index) => {
                         return (
-                            <div key={index}className="card-type">
+                            <div key={index} className="card-type">
                                 {type.type.name}
                             </div>
                         )
@@ -39,5 +39,3 @@ function Card({pokemon, onClick}) {
         </div>
     )
 }
-
-export default Card;

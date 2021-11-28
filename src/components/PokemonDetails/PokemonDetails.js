@@ -5,7 +5,7 @@ import './PokemonDetails.css'
 export default function PokemonDetails(props) {
     return (
         <div>
-            <div className="btn btn-common btn-top">
+            <div className="btn btn-common">
                 <button onClick={props.closeDetails}>Back</button>
             </div>
             
@@ -39,9 +39,13 @@ export default function PokemonDetails(props) {
                     </div>
                     <div className="card-data">
                         <p className="title">Ability</p>
-                        <p>{props.data.abilities.map(item =>{
-                            return item.ability.name
-                        }).join(", ")}</p>
+                        <p>
+                            {
+                                props.data.abilities.map(item => {
+                                    return item.ability.name
+                                }).join(", ")
+                            }
+                        </p>
                     </div>
                 </div>
             </div>
